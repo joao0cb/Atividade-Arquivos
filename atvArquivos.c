@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define TAM_VIDEOSFAV 100
 #define TAM_VIDEOS 5
@@ -45,7 +46,7 @@ int main() {
         switch(escolha) 
         {
         case 1:
-
+            cadastrarVideo(videos, TAM_VIDEOS);
         case 2:
         case 3:
         case 4:
@@ -101,8 +102,11 @@ void cadastrarVideo(struct ArquivoVideo videos[], int tam) {
     FILE *arqVideos = fopen("ArquivoVideos.bin", "ab");
     if(arqVideos == NULL) {
         printf("Erro na abertura do arquivo!\n");
-        return 1;
+        return;
     }
-    fwrite(&videos, sizeof(struct ArquivoVideo), 1, arqVideos);
+    if (fwrite(&videos[i], sizeof(struct ArquivoVideo), 1, arqVideos) != 1) {
+        printf("Erro ao escrever no arquivo.\n");
+    }
+
     fclose(arqVideos);
 }
