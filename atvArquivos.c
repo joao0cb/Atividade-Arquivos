@@ -3,8 +3,8 @@
 #include <string.h>
 
 #define TAM_VIDEOSFAV 100
-#define TAM_VIDEOS 5
-#define TAM_USUARIOS 5
+#define TAM_VIDEOS 1000
+#define TAM_USUARIOS 1000
 #define TAM_NOMES 100
 
 struct ArquivoVideo {
